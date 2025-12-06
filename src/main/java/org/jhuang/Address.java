@@ -17,7 +17,8 @@ public class Address {
     private String postalCode;
 
     /**
-     * checks whether a postal code is valid
+     * checks whether a postal code is valid. A valid postal code has length 6
+     * and is structure as CDCDCD where C is a letter and D is a digit
      * @param postalCode the postal code being checked
      * @return whether the postal code is valid (true) or not (false)
      */
