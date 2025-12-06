@@ -30,7 +30,7 @@ public class Department {
     public Department(String departmentName) {
         if (isValidDepartmentName(departmentName)) {
             this.departmentName = departmentName;
-            this.departmentId = String.format("D%2d", nextId++);
+            this.departmentId = String.format("D%02d", nextId++);
         }
         this.departmentName = null;
         this.departmentId = null;
