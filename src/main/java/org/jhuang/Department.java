@@ -19,4 +19,13 @@ public class Department {
         }
         return true;
     }
+
+    public Department(String departmentName) {
+        if (isValidDepartmentName(departmentName)) {
+            this.departmentName = departmentName;
+            this.departmentId = String.format("D%2d", nextId++);
+        }
+        this.departmentName = null;
+        this.departmentId = null;
+    }
 }
