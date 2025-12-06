@@ -1,5 +1,12 @@
 package org.jhuang;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
+@ToString
+@EqualsAndHashCode
+@Getter
 public class Department {
     private String departmentId;
     private String departmentName;
@@ -27,5 +34,13 @@ public class Department {
         }
         this.departmentName = null;
         this.departmentId = null;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        if (isValidDepartmentName(departmentName)) {
+            this.departmentName = departmentName;
+        } else {
+            System.out.println("Invalid Department Name");
+        }
     }
 }
