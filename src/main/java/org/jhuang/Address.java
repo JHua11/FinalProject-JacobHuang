@@ -1,7 +1,14 @@
 package org.jhuang;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import util.Util;
-
+@ToString
+@EqualsAndHashCode
+@Getter
+@Setter
 public class Address {
     private int streetNo;
     private String street;
@@ -40,6 +47,14 @@ public class Address {
             this.city = null;
             this.province = null;
             this.postalCode = null;
+        }
+    }
+
+    public void setPostalCode(String postalCode) {
+        if (isValidPostalCode(postalCode)){
+            this.postalCode = postalCode;
+        } else {
+            System.out.println("Invalid Postal Code");
         }
     }
 
