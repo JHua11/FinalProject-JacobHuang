@@ -1,8 +1,5 @@
 package org.jhuang;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Address {
     private int streetNo;
     private String street;
