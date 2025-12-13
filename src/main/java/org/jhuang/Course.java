@@ -16,4 +16,39 @@ public class Course {
     private List<Assignment> assignments;
     private List<Student> registeredStudents;
     private static int nextId = 1;
+
+    public boolean isAssignmentWeightValid() {
+        double weightSum = 0;
+        for (Assignment assignment : assignments) {
+            weightSum += assignment.getWeight();
+        }
+        return weightSum == 100;
+    }
+
+    public String toSimplifiedString() {
+        return "Course{" +
+                "courseId='" + courseId + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", credits=" + credits +
+                ", department=" + department.getDepartmentName() +
+                '}';
+    }
+
+    @Override
+    public String toString() {
+        String studentDisplay = "";
+        for (Student student : registeredStudents) {
+            studentDisplay += student.toSimplifiedString() + ", ";
+        }
+        studentDisplay = studentDisplay.substring(0,studentDisplay.length() - 2);
+        return "Course{" +
+                "courseId='" + courseId + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", credits=" + credits +
+                ", department=" + department.getDepartmentName() +
+                ", assignments=" + assignments +
+                ", registeredStudents=" + studentDisplay +
+                ", currentAssignmentWeightValid=" + isAssignmentWeightValid() +
+                '}';
+    }
 }
