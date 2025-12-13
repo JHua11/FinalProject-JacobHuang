@@ -3,6 +3,7 @@ package org.jhuang;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import util.Util;
 
 @ToString
 @EqualsAndHashCode
@@ -29,16 +30,18 @@ public class Department {
 
     public Department(String departmentName) {
         if (isValidDepartmentName(departmentName)) {
-            this.departmentName = departmentName;
+            this.departmentName = Util.toTitleCase(departmentName);
             this.departmentId = String.format("D%02d", nextId++);
         }
         this.departmentName = null;
         this.departmentId = null;
     }
 
+
+
     public void setDepartmentName(String departmentName) {
         if (isValidDepartmentName(departmentName)) {
-            this.departmentName = departmentName;
+            this.departmentName = Util.toTitleCase(departmentName);
         } else {
             System.out.println("Invalid Department Name");
         }
