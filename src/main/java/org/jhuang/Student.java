@@ -89,7 +89,7 @@ public class Student {
                 '}';
     }
 
-    private enum Gender {
+    public enum Gender {
         MALE, FEMALE
     }
 }
