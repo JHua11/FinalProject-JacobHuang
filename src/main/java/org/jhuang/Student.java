@@ -27,7 +27,7 @@ public class Student {
      * @param course the course the student is being registered to
      * @return whether the operation was successful (true) or not (false)
      */
-    boolean registerCourse(Course course) {
+    public boolean registerCourse(Course course) {
         if (registeredCourses.contains(course)) {
             return false;
         }
@@ -46,7 +46,7 @@ public class Student {
      * @param course the course to be dropped
      * @return whether the operation was successful (true) or not (false)
      */
-    boolean dropCourse(Course course) {
+    public boolean dropCourse(Course course) {
         if (!registeredCourses.contains(course)) {
             return false;
         }
