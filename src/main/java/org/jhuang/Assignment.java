@@ -1,10 +1,12 @@
 package org.jhuang;
 
-import java.util.List;
+import lombok.Getter;
 
+import java.util.List;
+@Getter
 public class Assignment {
     private String assignmentId;
-    private String assighmentName;
+    private String assignmentName;
     private double weight;
     private List<Integer> scores;
     private static int nextId = 1;

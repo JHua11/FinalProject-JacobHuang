@@ -38,6 +38,22 @@ public class Student {
         return true;
     }
 
+    /**
+     * removes the course form the student's registeredCourses list
+     * and removes the student from the course's registeredStudents list.
+     * If the course is not registered yet, directly returns false
+     * @param course the course to be dropped
+     * @return whether the operation was successful (true) or not (false)
+     */
+    boolean dropCourse(Course course) {
+        if (!registeredCourses.contains(course)) {
+            return false;
+        }
+        registeredCourses.remove(course);
+        course.getRegisteredStudents().remove(this);
+        return true;
+    }
+
     private enum Gender {
         MALE, FEMALE
     }
