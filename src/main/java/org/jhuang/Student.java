@@ -1,7 +1,13 @@
 package org.jhuang;
 
-import java.util.List;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.List;
+@EqualsAndHashCode
+@Getter
+@Setter
 public class Student {
     private String studentId;
     private String studentName;
@@ -10,4 +16,29 @@ public class Student {
     private Department department;
     private List<Course> registeredCourses;
     private static int nextId = 1;
+
+    /**
+     * registers the student to a course; this method (1) adds the course to the
+     * student's registeredCourses list, (2) adds the student to the course's
+     * registeredStudents list, (3) appends a null for the scores of each assignment
+     * of the course. If the course is already registered (exists in the student's
+     * registeredCourses list), directly returns false
+     * @param course the course the student is being registered to
+     * @return whether the operation was successful (true) or not (false)
+     */
+    boolean registerCourse(Course course) {
+        if (registeredCourses.contains(course)) {
+            return false;
+        }
+        registeredCourses.add(course);
+        course.getRegisteredStudents().add(this);
+        for (Assignment assignment : course.getAssignments()) {
+            assignment.getScores().add(null);
+        }
+        return true;
+    }
+
+    private enum Gender {
+        MALE, FEMALE
+    }
 }
