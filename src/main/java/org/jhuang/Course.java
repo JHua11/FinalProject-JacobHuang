@@ -24,7 +24,7 @@ public class Course {
     private static int nextId = 1;
 
     public Course(String courseName, double credits, Department department) {
-        this.courseId = String.format("C-%s-%02d", department.getDepartmentId(), nextId);
+        this.courseId = String.format("C-%s-%02d", department.getDepartmentId(), nextId++);
         this.courseName = Util.toTitleCase(courseName);
         this.credits = credits;
         this.department = department;
