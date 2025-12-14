@@ -76,6 +76,10 @@ public class Course {
                 gradeSum += assignment.getScores().get(i) * assignment.getWeight();
                 weightSum += assignment.getWeight();
             }
+            if (weightSum == 0) {
+                Arrays.fill(averages, 0);
+                return averages;
+            }
             averages[i] = (int) (gradeSum / weightSum);
         }
         return averages;
