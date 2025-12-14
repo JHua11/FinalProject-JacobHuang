@@ -124,6 +124,11 @@ public class Course {
         return len;
     }
 
+    /**
+     * extracts the names of students in a student arraylist
+     * @param students the arraylist of students
+     * @return an arraylist of the names of the students
+     */
     private ArrayList<String> getNames(ArrayList<Student> students) {
         ArrayList<String> names = new ArrayList<>();
         for (Student student : students) {
@@ -132,6 +137,13 @@ public class Course {
         return names;
     }
 
+    /**
+     * formats a line for a student to be printed in displayScores();
+     * includes the name and scores of a student
+     * @param student the student
+     * @param maxLen the maximum name length in all the students in the course
+     * @return the formatted line
+     */
     private String studentLine(Student student, int maxLen) {
         int studentIdx = registeredStudents.indexOf(student);
         String format = "%-" + maxLen + "s";
@@ -140,12 +152,17 @@ public class Course {
             int score = assignment.getScores().get(studentIdx);
             line += String.format("%14d", score);
         }
-        line += String.format("%14d", finalScores.get(studentIdx));
+        line += String.format("%14d\n", finalScores.get(studentIdx));
         return line;
     }
 
-    private String assignmentNamesLine(int length) {
-        String format = "%" + length + "s";
+    /**
+     * formats a line for the assignment names to be printed in displayScores()
+     * @param distance the distance between the left bound and the first assignment name
+     * @return the formatted line
+     */
+    private String assignmentNamesLine(int distance) {
+        String format = "%" + distance + "s";
         String line = String.format(format, "");
         for (Assignment assignment : assignments) {
            line += String.format("%14s", assignment.getAssignmentId());
@@ -156,7 +173,7 @@ public class Course {
 
     public void displayScores() {
         int longestNameLen = longestStringLen(getNames(registeredStudents));
-        int assignmentTitlesDistance = 9 + longestNameLen;
+        int assignmentTitlesDistance = 8 + longestNameLen;
         String format = "%" + assignmentTitlesDistance + "s\n";
         System.out.printf("Course: %s(%s)\n", courseName, courseId);
         System.out.printf(format, assignmentNamesLine(assignmentTitlesDistance));
