@@ -16,9 +16,9 @@ public class Course {
     private String courseName;
     private double credits;
     private Department department;
-    private List<Assignment> assignments;
-    private List<Student> registeredStudents;
-    private List<Integer> finalScores;
+    private ArrayList<Assignment> assignments;
+    private ArrayList<Student> registeredStudents;
+    private ArrayList<Integer> finalScores;
     private static int nextId = 1;
 
     /**
