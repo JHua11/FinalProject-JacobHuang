@@ -120,6 +120,38 @@ public class Course {
         return names;
     }
 
+    private String studentLine(Student student, int maxLen) {
+        int studentIdx = registeredStudents.indexOf(student);
+        String format = "%-" + maxLen + "s";
+        String line = String.format("%8s" + format, "", student.getStudentName());
+        for (Assignment assignment : assignments) {
+            int score = assignment.getScores().get(studentIdx);
+            line += String.format("%14d", score);
+        }
+        line += String.format("%14d", finalScores.get(studentIdx));
+        return line;
+    }
+
+    private String assignmentNamesLine(int length) {
+        String format = "%" + length + "s";
+        String line = String.format(format, "");
+        for (Assignment assignment : assignments) {
+           line += String.format("%14s", assignment.getAssignmentId());
+        }
+        line += String.format("%14s", "Final Score");
+        return line;
+    }
+
+    public void displayScores() {
+        int longestNameLen = longestStringLen(getNames(registeredStudents));
+        int assignmentTitlesDistance = 9 + longestNameLen;
+        String format = "%" + assignmentTitlesDistance + "s\n";
+        System.out.printf("Course: %s(%s)\n", courseName, courseId);
+        System.out.printf(format, assignmentNamesLine(assignmentTitlesDistance));
+        for (Student student : registeredStudents) {
+            System.out.printf(studentLine(student, longestNameLen));
+        }
+    }
 
     public String toSimplifiedString() {
         return "Course{" +
