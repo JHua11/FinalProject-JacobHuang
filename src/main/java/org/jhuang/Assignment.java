@@ -1,11 +1,13 @@
 package org.jhuang;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.Random;
 
 @Getter
+@Setter
 public class Assignment {
     private String assignmentId;
     private String assignmentName;
