@@ -19,7 +19,7 @@ public class Department {
      * @param departmentName the name to be checked
      * @return whether the name is valid (true) or not (false)
      */
-    private static boolean isValidDepartmentName(String departmentName) {
+    public static boolean isDepartmentNameValid(String departmentName) {
         for (char c : departmentName.toCharArray()) {
             if (!Character.isLetter(c) && !Character.isSpaceChar(c)) {
                 return false;
@@ -29,7 +29,7 @@ public class Department {
     }
 
     public Department(String departmentName) {
-        if (isValidDepartmentName(departmentName)) {
+        if (isDepartmentNameValid(departmentName)) {
             this.departmentName = Util.toTitleCase(departmentName);
             this.departmentId = String.format("D%02d", nextId++);
         } else {
@@ -41,10 +41,8 @@ public class Department {
 
 
     public void setDepartmentName(String departmentName) {
-        if (isValidDepartmentName(departmentName)) {
+        if (isDepartmentNameValid(departmentName)) {
             this.departmentName = Util.toTitleCase(departmentName);
-        } else {
-            System.out.println("Invalid Department Name");
         }
     }
 }
