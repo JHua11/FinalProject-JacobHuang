@@ -22,7 +22,7 @@ public class Address {
      * @param postalCode the postal code being checked
      * @return whether the postal code is valid (true) or not (false)
      */
-    public static boolean isValidPostalCode(String postalCode) {
+    public static boolean isPostalCodeValid(String postalCode) {
         if (postalCode.length() == 6) {
             for (int i = 0; i < 6; i++) {
                 if (!(Character.isLetter(postalCode.charAt(i)) && i % 2 == 0
@@ -36,7 +36,7 @@ public class Address {
     }
 
     public Address(int streetNo, String street, String city, Province province, String postalCode) {
-        if (isValidPostalCode(postalCode)) {
+        if (isPostalCodeValid(postalCode)) {
             this.streetNo = streetNo;
             this.street = Util.toTitleCase(street);
             this.city = Util.toTitleCase(city);
@@ -52,7 +52,7 @@ public class Address {
     }
 
     public void setPostalCode(String postalCode) {
-        if (isValidPostalCode(postalCode)){
+        if (isPostalCodeValid(postalCode)){
             this.postalCode = postalCode.toUpperCase();
         }
     }
