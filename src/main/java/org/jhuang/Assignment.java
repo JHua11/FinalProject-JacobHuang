@@ -13,6 +13,12 @@ public class Assignment {
     private List<Integer> scores;
     private static int nextId = 1;
 
+    public Assignment(String assignmentName, double weight) {
+        this.assignmentId = String.format("Assignment%02d", nextId++);
+        this.assignmentName = assignmentName;
+        this.weight = weight;
+    }
+
     /**
      * calculates the average score the assignment
      * @return the calculated average
