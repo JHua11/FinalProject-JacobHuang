@@ -100,7 +100,6 @@ public class Course {
      * and calculate the final score for each student
      */
     public void generateScores() {
-        Random random = new Random();
         for (Assignment assignment : assignments) {
             assignment.generateRandomScores();
         }
