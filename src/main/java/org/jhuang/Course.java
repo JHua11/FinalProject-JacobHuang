@@ -68,16 +68,18 @@ public class Course {
      */
     public int[] calcStudentsAverages() {
         int[] averages = new int[registeredStudents.size()];
+        double weightSum = 0;
+        for (Assignment assignment : assignments) {
+            weightSum += assignment.getWeight();
+        }
+        if (weightSum == 0) {
+            Arrays.fill(averages, 0);
+            return averages;
+        }
         for (int i = 0; i < registeredStudents.size(); i++) {
             double gradeSum = 0;
-            double weightSum = 0;
             for (Assignment assignment : assignments) {
                 gradeSum += assignment.getScores().get(i) * assignment.getWeight();
-                weightSum += assignment.getWeight();
-            }
-            if (weightSum == 0) {
-                Arrays.fill(averages, 0);
-                return averages;
             }
             averages[i] = (int) Math.round(gradeSum / weightSum);
         }
