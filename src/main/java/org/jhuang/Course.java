@@ -3,8 +3,11 @@ package org.jhuang;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import util.Util;
 
 import java.util.List;
+import java.util.Random;
+
 @EqualsAndHashCode
 @Getter
 @Setter
@@ -15,6 +18,7 @@ public class Course {
     private Department department;
     private List<Assignment> assignments;
     private List<Student> registeredStudents;
+    private List<Integer> finalScores;
     private static int nextId = 1;
 
     /**
@@ -43,6 +47,7 @@ public class Course {
         for (Assignment assignment : assignments) {
             assignment.getScores().add(null);
         }
+        finalScores.add(null);
         return true;
     }
 
@@ -53,14 +58,43 @@ public class Course {
     public int[] calcStudentsAverages() {
         int[] averages = new int[registeredStudents.size()];
         for (int i = 0; i < registeredStudents.size(); i++) {
-            double sum = 0;
+            double gradeSum = 0;
+            double weightSum = 0;
             for (Assignment assignment : assignments) {
-                sum += assignment.getScores().get(i) * assignment.getWeight() / 100;
+                gradeSum += assignment.getScores().get(i) * assignment.getWeight();
+                weightSum += assignment.getWeight();
             }
-            averages[i] = (int) sum;
+            averages[i] = (int) (gradeSum / weightSum);
         }
         return averages;
     }
+
+    /**
+     * adds a new assignment to the course
+     * @param assignmentName the name of the assignment to be added
+     * @param weight the weight of the assignment to be added
+     * @return true
+     */
+    public boolean addAssignment(String assignmentName, double weight) {
+        assignments.add(new Assignment(assignmentName, weight));
+        return true;
+    }
+
+    /**
+     * generates random scores for each assignment and student
+     * and calculate the final score for each student
+     */
+    public void generateScores() {
+        Random random = new Random();
+        for (Assignment assignment : assignments) {
+            assignment.generateRandomScore();
+        }
+        for (int i = 0; i < finalScores.size(); i++) {
+            finalScores.set(i, calcStudentsAverages()[i]);
+        }
+    }
+
+
 
     public String toSimplifiedString() {
         return "Course{" +
