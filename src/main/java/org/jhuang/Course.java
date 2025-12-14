@@ -7,7 +7,6 @@ import util.Util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 @EqualsAndHashCode
@@ -145,12 +144,12 @@ public class Course {
      * formats a line for a student to be printed in displayScores();
      * includes the name and scores of a student
      * @param student the student
-     * @param maxLen the maximum name length in all the students in the course
+     * @param maxNameLen the maximum name length in all the students in the course
      * @return the formatted line
      */
-    private String studentLine(Student student, int maxLen) {
+    private String studentLine(Student student, int maxNameLen) {
         int studentIdx = registeredStudents.indexOf(student);
-        String format = "%-" + maxLen + "s";
+        String format = "%-" + maxNameLen + "s";
         String line = String.format("%8s" + format, "", student.getStudentName());
         for (Assignment assignment : assignments) {
             int score = assignment.getScores().get(studentIdx);
@@ -175,6 +174,36 @@ public class Course {
         return line;
     }
 
+    /**
+     * calculates the final average of all the course's students
+     * @return the average
+     */
+    private int calcFinalScoresAvg() {
+        if (finalScores.isEmpty()) {
+            return 0;
+        }
+        double sum = 0;
+        for (int score : finalScores) {
+            sum += score;
+        }
+        return (int) Math.round(sum / finalScores.size());
+    }
+
+    /**
+     * formats a line for the "Average" row to be printed in displayScores()
+     * @param maxNameLen the maximum name length in all the students in the course
+     * @return the formatted line
+     */
+    private String averageLine(int maxNameLen) {
+        String format = "%-" + maxNameLen + "s";
+        String line = String.format("%8s" + format, "", "Average");
+        for (Assignment assignment : assignments) {
+            line += String.format("%14d", (int) Math.round(assignment.calcAssignmentAvg())); // the example shows integers
+        }
+        line += String.format("%14d\n", calcFinalScoresAvg());
+        return line;
+    }
+
     public void displayScores() {
         int longestNameLen = longestStringLen(getNames(registeredStudents));
         int assignmentTitlesDistance = 8 + longestNameLen;
@@ -184,6 +213,7 @@ public class Course {
         for (Student student : registeredStudents) {
             System.out.printf(studentLine(student, longestNameLen));
         }
+        System.out.printf(averageLine(longestNameLen));
     }
 
     public String toSimplifiedString() {
