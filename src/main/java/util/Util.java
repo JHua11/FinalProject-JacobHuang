@@ -8,14 +8,14 @@ public class Util {
      * @return the string in title case
      */
     public static String toTitleCase(String str) {
-        if (str == null) {
-            return null;
+        if (str == null || str.trim().isEmpty()) {
+            return str;
         }
         String[] strs = str.split(" ");
         String finalWordString = "";
         for (String word : strs) {
             if (word.length() == 1) {
-                finalWordString += word.toUpperCase();
+                finalWordString += word.toUpperCase() + " ";
                 continue;
             }
             finalWordString += word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase() + " ";
