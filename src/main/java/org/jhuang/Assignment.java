@@ -1,5 +1,6 @@
 package org.jhuang;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +10,7 @@ import java.util.Random;
 
 @Getter
 @Setter
+@EqualsAndHashCode
 public class Assignment {
     private String assignmentId;
     private String assignmentName;
