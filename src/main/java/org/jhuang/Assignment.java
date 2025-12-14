@@ -28,6 +28,9 @@ public class Assignment {
      * @return the calculated average
      */
     public double calcAssignmentAvg() {
+        if (scores.isEmpty()) {
+            return 0;
+        }
         double sum = 0;
         for (int score : scores) {
             sum += score;
