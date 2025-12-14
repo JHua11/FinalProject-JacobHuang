@@ -102,7 +102,7 @@ public class Course {
     public void generateScores() {
         Random random = new Random();
         for (Assignment assignment : assignments) {
-            assignment.generateRandomScore();
+            assignment.generateRandomScores();
         }
         for (int i = 0; i < finalScores.size(); i++) {
             finalScores.set(i, calcStudentsAverages()[i]);

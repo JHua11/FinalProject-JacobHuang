@@ -50,7 +50,7 @@ public class Assignment {
      * if the number is 5, 6, 7, 8, then generate a random score in range [80, 90) for the student;
      * if the number is 9, 10, then generate a random score in range [90, 100] for the student
      */
-    public void generateRandomScore() {
+    public void generateRandomScores() {
         Random random = new Random();
         for (int i = 0; i < scores.size(); i++) {
             int determinant = random.nextInt(0, 11);
