@@ -80,7 +80,7 @@ public class Course {
                 Arrays.fill(averages, 0);
                 return averages;
             }
-            averages[i] = (int) (gradeSum / weightSum);
+            averages[i] = (int) Math.round(gradeSum / weightSum);
         }
         return averages;
     }
