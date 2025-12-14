@@ -94,6 +94,31 @@ public class Course {
         }
     }
 
+    /**
+     * finds the longest string in an ArrayList
+     * @param strs the ArrayList
+     * @return the length of the longest string
+     */
+    private int longestStringLen(ArrayList<String> strs) {
+        int len = 0;
+        for (String str : strs) {
+            if (str == null) {
+                continue;
+            }
+            if (str.length() > len) {
+                len = str.length();
+            }
+        }
+        return len;
+    }
+
+    private ArrayList<String> getNames(ArrayList<Student> students) {
+        ArrayList<String> names = new ArrayList<>();
+        for (Student student : students) {
+            names.add(student.getStudentName());
+        }
+        return names;
+    }
 
 
     public String toSimplifiedString() {
