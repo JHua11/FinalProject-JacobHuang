@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AddressTest {
 
     @Test
-    @DisplayName("Valid input")
+    @DisplayName("postCode check valid input")
     void isPostalCodeValid1() {
         String postalCode = "A1B2C3";
         boolean expected = true;
@@ -17,7 +17,7 @@ class AddressTest {
         Assertions.assertEquals(expected, result);
     }
     @Test
-    @DisplayName("Valid lower case input")
+    @DisplayName("postCode check valid lower case input")
     void isPostalCodeValid2() {
         String postalCode = "a1b2c3";
         boolean expected = true;
@@ -25,7 +25,7 @@ class AddressTest {
         Assertions.assertEquals(expected, result);
     }
     @Test
-    @DisplayName("invalid length input")
+    @DisplayName("postCode Check invalid length input")
     void isPostalCodeValid3() {
         String postalCode = "A1B2C3A";
         boolean expected = false;
@@ -33,7 +33,7 @@ class AddressTest {
         Assertions.assertEquals(expected, result);
     }
     @Test
-    @DisplayName("invalid format input (extra letter)")
+    @DisplayName("postCode check invalid format input (extra letter)")
     void isPostalCodeValid4() {
         String postalCode = "AAB2C3";
         boolean expected = false;
@@ -50,7 +50,7 @@ class AddressTest {
     }
 
     @Test
-    @DisplayName("valid postal code input")
+    @DisplayName("constructor valid postal code input")
     void Address1() {
         int streetNo = 1;
         String street = "Street";
@@ -65,7 +65,7 @@ class AddressTest {
         Assertions.assertEquals(postalCode, result.getPostalCode());
     }
     @Test
-    @DisplayName("invalid postal code input")
+    @DisplayName("constructor invalid postal code input")
     void Address2() {
         int streetNo = 1;
         String street = "Street";
@@ -81,7 +81,7 @@ class AddressTest {
     }
 
     @Test
-    @DisplayName("valid postal code input")
+    @DisplayName("setter valid postal code input")
     void setPostalCode1() {
         String postalCode = "A1B2C3";
         Address expected = new Address(1, "Street", "City", Address.Province.AB, "Z9Z9Z9");
@@ -90,7 +90,7 @@ class AddressTest {
         Assertions.assertEquals(expected, result);
     }
     @Test
-    @DisplayName("invalid postal code input")
+    @DisplayName("setter invalid postal code input")
     void setPostalCode2() {
         String postalCode = "A1B2C3";
         Address expected = new Address(1, "Street", "City", Address.Province.AB, "A1B2C3");
