@@ -20,6 +20,9 @@ public class Department {
      * @return whether the name is valid (true) or not (false)
      */
     public static boolean isDepartmentNameValid(String departmentName) {
+        if (departmentName == null || departmentName.trim().isEmpty()) {
+            return false;
+        }
         for (char c : departmentName.toCharArray()) {
             if (!Character.isLetter(c) && !Character.isSpaceChar(c)) {
                 return false;
