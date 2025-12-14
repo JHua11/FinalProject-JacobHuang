@@ -22,7 +22,7 @@ public class Address {
      * @param postalCode the postal code being checked
      * @return whether the postal code is valid (true) or not (false)
      */
-    private static boolean isValidPostalCode(String postalCode) {
+    public static boolean isValidPostalCode(String postalCode) {
         if (postalCode.length() == 6) {
             for (int i = 0; i < 6; i++) {
                 if (!(Character.isLetter(postalCode.charAt(i)) && i % 2 == 0
@@ -53,9 +53,7 @@ public class Address {
 
     public void setPostalCode(String postalCode) {
         if (isValidPostalCode(postalCode)){
-            this.postalCode = postalCode;
-        } else {
-            System.out.println("Invalid Postal Code");
+            this.postalCode = postalCode.toUpperCase();
         }
     }
 
@@ -63,7 +61,7 @@ public class Address {
         BC,
         SK,
         AB,
-        MA,
+        MB,
         ON,
         QC,
         NS,
