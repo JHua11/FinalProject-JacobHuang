@@ -204,6 +204,9 @@ public class Course {
         return line;
     }
 
+    /**
+     * displays the scores of a course in a table, with the assignment averages and student weighted average
+     */
     public void displayScores() {
         int longestNameLen = longestStringLen(getNames(registeredStudents));
         int assignmentTitlesDistance = 8 + longestNameLen;
