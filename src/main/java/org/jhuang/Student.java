@@ -37,6 +37,7 @@ public class Student {
         for (Assignment assignment : course.getAssignments()) {
             assignment.getScores().add(null);
         }
+        course.getFinalScores().add(null);
         return true;
     }
 
