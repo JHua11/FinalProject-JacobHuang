@@ -75,7 +75,7 @@ class CourseTest {
     }
 
     @Test
-    @DisplayName("regular input, 2 students")
+    @DisplayName("calcStudentsAverage regular input, 2 students")
     void calcStudentsAverages1() {
         Department department = new Department("Mathematics");
         Course course = new Course("Math", 5, department);
@@ -96,7 +96,7 @@ class CourseTest {
         Assertions.assertArrayEquals(expected, result);
     }
     @Test
-    @DisplayName("weightless input, 2 students")
+    @DisplayName("calcStudentsAverage weightless input, 2 students")
     void calcStudentsAverages2() {
         Department department = new Department("Mathematics");
         Course course = new Course("Math", 5, department);
