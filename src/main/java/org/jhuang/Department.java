@@ -32,9 +32,10 @@ public class Department {
         if (isValidDepartmentName(departmentName)) {
             this.departmentName = Util.toTitleCase(departmentName);
             this.departmentId = String.format("D%02d", nextId++);
+        } else {
+            this.departmentName = null;
+            this.departmentId = null;
         }
-        this.departmentName = null;
-        this.departmentId = null;
     }
 
 
