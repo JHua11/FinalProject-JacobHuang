@@ -52,8 +52,13 @@ public class Student {
         if (!registeredCourses.contains(course)) {
             return false;
         }
+        int studentIdx = course.getRegisteredStudents().indexOf(this);
         registeredCourses.remove(course);
         course.getRegisteredStudents().remove(this);
+        for (Assignment assignment : course.getAssignments()) {
+            assignment.getScores().remove(studentIdx);
+        }
+        course.getFinalScores().remove(studentIdx);
         return true;
     }
 
@@ -68,7 +73,7 @@ public class Student {
 
     public String toSimplifiedString() {
         return "Student{" +
-                "department=" + department +
+                "departmentName=" + department.getDepartmentName() +
                 ", studentId='" + studentId + '\'' +
                 ", studentName='" + studentName + '\'' +
                 '}';
