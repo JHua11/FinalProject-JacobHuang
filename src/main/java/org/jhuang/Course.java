@@ -21,6 +21,16 @@ public class Course {
     private ArrayList<Integer> finalScores;
     private static int nextId = 1;
 
+    public Course(String courseName, double credits, Department department) {
+        this.courseId = String.format("C-%s-%02d", department.getDepartmentId(), nextId);
+        this.courseName = courseName;
+        this.credits = credits;
+        this.department = department;
+        this.assignments = new ArrayList<>();
+        this.registeredStudents = new ArrayList<>();
+        this.finalScores = new ArrayList<>();
+    }
+
     /**
      * checks if the sum of weights of all assignments of that course equals to 100%
      * @return whether the sum is 100 (true) or not (false)
