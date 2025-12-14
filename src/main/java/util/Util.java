@@ -20,6 +20,6 @@ public class Util {
             }
             finalWordString += word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase() + " ";
         }
-        return finalWordString;
+        return finalWordString.substring(0, finalWordString.length() - 1);
     }
 }
